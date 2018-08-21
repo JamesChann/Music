@@ -1,7 +1,7 @@
 <template>
   <div class="loading">
-    <img width="24" height="24" src="./loading.gif">
-    <p class="desc">{{title}}</p>
+    <img class="img" width="24" height="24" src="./loading.gif">
+    <span class="desc">{{title}}</span>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -9,7 +9,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '正在载入...'
+      default: '努力加载中...'
     }
   }
 }
@@ -20,8 +20,11 @@ export default {
 .loading
   width: 100%
   text-align: center
+  .img
+    vertical-align: middle
   .desc
-    line-height: 20px
+    line-height: 24px
+    vertical-align: middle
     font-size: $font-size-small
     color: $color-text-l
 </style>

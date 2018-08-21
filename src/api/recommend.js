@@ -14,8 +14,31 @@ export function getRecommend() {
   return jsonp(url, data, options)
 }
 
-// 抓取歌单数据
+// 抓取热门歌单数据
 export function getDiscList() {
+  const url = '/api/getDiscList'
+
+  const data = Object.assign({}, commonParams, {
+    platform: 'yqq',
+    hostUin: 0,
+    sin: 0,
+    ein: 5,
+    sortId: 2,
+    needNewCode: 0,
+    categoryId: 10000000,
+    rnd: Math.random(),
+    format: 'json'
+  })
+
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 抓取推荐歌单数据
+export function getRecommendList() {
   const url = '/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
@@ -24,6 +47,51 @@ export function getDiscList() {
     sin: 0,
     ein: 29,
     sortId: 5,
+    needNewCode: 0,
+    categoryId: 10000000,
+    rnd: Math.random(),
+    format: 'json'
+  })
+
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 抓取歌单详情数据
+export function getSongList(disstid) {
+  const url = '/api/getCdInfo'
+
+  const data = Object.assign({}, commonParams, {
+    disstid,
+    type: 1,
+    json: 1,
+    utf8: 1,
+    onlysong: 0,
+    platform: 'yqq',
+    hostUin: 0,
+    needNewCode: 0
+  })
+
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 抓取歌单全部数据
+export function getAllDiscList() {
+  const url = '/api/getDiscList'
+
+  const data = Object.assign({}, commonParams, {
+    platform: 'yqq',
+    hostUin: 0,
+    sin: 0,
+    ein: 29,
+    sortId: 2,
     needNewCode: 0,
     categoryId: 10000000,
     rnd: Math.random(),

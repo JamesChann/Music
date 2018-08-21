@@ -9,9 +9,6 @@
     <router-link tag="div" class="tab-link" to="/rank">
       <span class="tab-item">排行</span>
     </router-link>
-    <router-link tag="div" class="tab-link" to="/search">
-      <span class="tab-item">搜索</span>
-    </router-link>
   </div>
 </template>
 

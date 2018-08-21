@@ -199,7 +199,7 @@ export default {
           .avatar
             width: 50px
             height: 50px
-            border-radius: 50%
+            border-radius: 5px
           .name
             margin-left: 20px
             font-size: $font-size-medium
@@ -217,7 +217,7 @@ export default {
     .item
       padding: 3px
       line-height: 1
-      color: $color-text-l
+      color: $color-text-lll
       font-size: $font-size-small
       &.current
         color: $color-theme

@@ -1,22 +1,41 @@
 <template>
   <div id="app">
-    <m-header></m-header>
+    <user v-show="showFlag" @hide="hideUser"></user>
+    <m-header @showUser="userShow"></m-header>
     <tab></tab>
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
+    <player></player>
   </div>
 </template>
 
 <script>
 import MHeader from 'components/m-header/m-header'
 import Tab from 'components/tab/tab'
+import Player from 'components/player/player'
+import User from 'components/user/user'
 
 export default {
   name: 'App',
   components: {
     MHeader,
-    Tab
+    Tab,
+    Player,
+    User
+  },
+  data() {
+    return {
+      showFlag: false
+    }
+  },
+  methods: {
+    userShow() {
+      this.showFlag = true
+    },
+    hideUser() {
+      this.showFlag = false
+    }
   }
 }
 </script>
