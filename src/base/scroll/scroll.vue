@@ -29,6 +29,10 @@ export default {
     pullup: {
       type: Boolean,
       default: false
+    },
+    pulldown: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -62,9 +66,27 @@ export default {
       }
 
       if (this.pullup) {
-        this.scroll.on('scrollEnd', () => {
+        this.scroll.on('touchEnd', () => {
           if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
             this.$emit('scrollToEnd')
+          }
+        })
+      }
+
+      if (this.pulldown) {
+        // 滑动中
+        this.scroll.on('scroll', () => {
+          if (this.scroll.y > 15) {
+            this.$emit('scrollToTop')
+          }
+        })
+
+        // 滑动结束
+        this.scroll.on('touchEnd', () => {
+          if (this.scroll.y > 80) {
+            setTimeout(() => {
+              this.$emit('scrollRefresh')
+            }, 200)
           }
         })
       }

@@ -1,7 +1,8 @@
 <template>
   <div class="recommend-wrapper">
-    <scroll ref="scroll" :data="playlist" class="recommend-cont">
+    <scroll ref="scroll" :data="playlist" :pulldown="pulldown" @scrollToTop="refreshReady" @scrollRefresh="refreshPage" class="recommend-cont">
       <div>
+        <refresh v-show="refreshFlag"></refresh>
         <!--轮播图-->
         <slider v-if="sliders.length">
           <div v-for="item in sliders" :key="item.id">
@@ -56,6 +57,7 @@
         <loading></loading>
       </div>
     </scroll>
+    <toast v-show="toastFlag"></toast>
     <router-view></router-view>
   </div>
 </template>
@@ -67,19 +69,26 @@ import Scroll from 'base/scroll/scroll'
 import {mapMutations} from 'vuex'
 import {getRecommend, getDiscList, getRecommendList} from 'api/recommend'
 import {ERR_OK} from 'api/config'
+import Refresh from 'base/refresh/refresh'
+import Toast from 'base/toast/toast'
 
 export default {
   name: 'Recommend',
   components: {
     Slider,
     Scroll,
-    Loading
+    Loading,
+    Refresh,
+    Toast
   },
   data() {
     return {
       sliders: [],
       playlist: [],
-      recDiscList: []
+      recDiscList: [],
+      refreshFlag: false,
+      pulldown: true,
+      toastFlag: false
     }
   },
   created() {
@@ -102,6 +111,17 @@ export default {
         path: '/disc-list'
       })
     },
+    refreshReady() {
+      this.refreshFlag = true
+    },
+    refreshPage() {
+      this.refreshFlag = false
+      this.$refs.scroll.refresh()
+      this.toastFlag = true
+      setTimeout(() => {
+        this.toastFlag = false
+      }, 2000)
+    },
     _getRecommend() {
       getRecommend().then((res) => {
         if (res.code === ERR_OK) {
@@ -117,7 +137,6 @@ export default {
     _getRecommendList() {
       getRecommendList().then((res) => {
         this.recDiscList = res.data.list
-        console.log(this.recDiscList)
       })
     },
     loadImage() {

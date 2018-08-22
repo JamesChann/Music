@@ -6,7 +6,7 @@
          @touchend="userTouchEnd"
          ref="user"
     >
-      <div class="user-cont">
+      <div class="user-cont" @touchstart.stop>
         <div class="cont-header">
           <div class="user-pic">
             <img class="pic-img" src="~common/image/avtar.jpg" alt="">
@@ -66,7 +66,6 @@ export default {
       }
       const touch = e.touches[0]
       const deltaX = touch.pageX - this.touch.startX
-      console.log(deltaX)
       if (deltaX >= 0) {
         return
       }
@@ -85,6 +84,9 @@ export default {
     },
     toInfo() {
       console.log(0)
+      this.$router.push({
+        path: '/user-info'
+      })
     },
     _toPercent(point) {
       let str = Number(point * 100).toFixed(1)
