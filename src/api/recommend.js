@@ -18,7 +18,7 @@ export function getRecommend() {
 
 // 抓取热门歌单数据
 export function getDiscList() {
-  const url = debug ? '/api/getDiscList' : 'http://118.190.147.105/music/api/getDiscList'
+  const url = debug ? '/api/getDiscList' : 'http://39.106.58.83/music/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
@@ -41,7 +41,7 @@ export function getDiscList() {
 
 // 抓取推荐歌单数据
 export function getRecommendList() {
-  const url = debug ? '/api/getDiscList' : 'http://118.190.147.105/music/api/getDiscList'
+  const url = debug ? '/api/getDiscList' : 'http://39.106.58.83/music/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
@@ -64,7 +64,7 @@ export function getRecommendList() {
 
 // 抓取歌单详情数据
 export function getSongList(disstid) {
-  const url = debug ? '/api/getCdInfo' : 'http://118.190.147.105/music/api/getCdInfo'
+  const url = debug ? '/api/getCdInfo' : 'http://39.106.58.83/music/api/getCdInfo'
 
   const data = Object.assign({}, commonParams, {
     disstid,
@@ -86,7 +86,7 @@ export function getSongList(disstid) {
 
 // 抓取歌单全部数据
 export function getAllDiscList() {
-  const url = debug ? '/api/getDiscList' : 'http://118.190.147.105/music/api/getDiscList'
+  const url = debug ? '/api/getDiscList' : 'http://39.106.58.83/music/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
