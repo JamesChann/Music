@@ -4,7 +4,7 @@
 
 演示
 ===
-:yum: 项目演示地址：[ListenMusic](118.190.147.105/music)，或者可以扫描二维码访问：
+:yum: 项目演示地址：[ListenMusic](http://118.190.147.105/music)，或者可以扫描二维码访问：
 
 ![github](https://github.com/James-Chann/preview/blob/master/Music/1537247868.png)
 
